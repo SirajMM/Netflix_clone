@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/downloads/downloads_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/core/constants.dart';
 import 'package:netflix_clone/presentation/widgets/app_bar_wdget.dart';
@@ -53,14 +55,15 @@ class _SmartDownloads extends StatelessWidget {
 
 class Section2 extends StatelessWidget {
   Section2({super.key});
-  final List imageList = [
-    "https://www.themoviedb.org/t/p/w220_and_h330_face/qq6Vjk7x8WnuII5rBu68EutZs5P.jpg",
-    "https://www.themoviedb.org/t/p/w220_and_h330_face/liLN69YgoovHVgmlHJ876PKi5Yi.jpg",
-    "https://www.themoviedb.org/t/p/w220_and_h330_face/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg"
-  ];
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsImage());
+    });
+    // BlocProvider.of<DownloadsBloc>(context)
+    //     .add(const DownloadsEvent.getDownloadsImage());
     final size = MediaQuery.of(context).size;
     return Column(
       children: [
@@ -75,30 +78,39 @@ class Section2 extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey, fontSize: 16),
         ),
-        SizedBox(
-          height: size.width,
-          width: size.width,
-          child: Stack(alignment: Alignment.center, children: [
-            CircleAvatar(
-              radius: size.width * 0.38,
-              backgroundColor: Colors.grey.withOpacity(.5),
-            ),
-            DownloadImageWidget(
-              imageList: imageList[0],
-              margin: const EdgeInsets.only(left: 150, bottom: 30),
-              angle: 20,
-              size: Size(size.width * .38, size.width * .55),
-            ),
-            DownloadImageWidget(
-                imageList: imageList[1],
-                margin: const EdgeInsets.only(right: 150, bottom: 30),
-                angle: -20,
-                size: Size(size.width * .38, size.width * .55)),
-            DownloadImageWidget(
-                imageList: imageList[2],
-                margin: const EdgeInsets.only(left: 0),
-                size: Size(size.width * .4, size.width * .63)),
-          ]),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return SizedBox(
+              height: size.width,
+              width: size.width,
+              child: state.isLoading
+                  ? const Center(child: CircularProgressIndicator())
+                  : Stack(alignment: Alignment.center, children: [
+                      CircleAvatar(
+                        radius: size.width * 0.38,
+                        backgroundColor: Colors.grey.withOpacity(.5),
+                      ),
+                      DownloadImageWidget(
+                        imageList:
+                            '$imageAppendUrl${state.downloads[0].posterPath}',
+                        margin: const EdgeInsets.only(left: 150, bottom: 30),
+                        angle: 20,
+                        size: Size(size.width * .38, size.width * .55),
+                      ),
+                      DownloadImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(right: 150, bottom: 30),
+                          angle: -20,
+                          size: Size(size.width * .38, size.width * .55)),
+                      DownloadImageWidget(
+                         imageList:
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(left: 0),
+                          size: Size(size.width * .4, size.width * .63)),
+                    ]),
+            );
+          },
         ),
       ],
     );

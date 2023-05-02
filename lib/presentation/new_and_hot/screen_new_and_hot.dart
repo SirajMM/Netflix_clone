@@ -1,10 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/everyones_widget.dart';
 import 'package:netflix_clone/presentation/new_and_hot/widgets/coming_soon_widget.dart';
-import 'package:netflix_clone/presentation/widgets/Custom_Icon.dart';
-import 'package:netflix_clone/presentation/widgets/video_widget.dart';
 import '../../core/constants.dart';
 
 class SreenNewAndHot extends StatelessWidget {

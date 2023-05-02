@@ -8,6 +8,8 @@ const kheight50 = SizedBox(height: 50);
 // image
 const kmainImage =
     "https://www.themoviedb.org/t/p/original/pmAv14TPE2vKMIRrVeCd1Ll7K94.jpg";
+
+const String imageAppendUrl = 'https://image.tmdb.org/t/p/w500';
 //Text styles
 TextStyle khomeTextstile = const TextStyle(
   fontSize: 14,
