@@ -21,7 +21,7 @@ class ScreenHome extends StatelessWidget {
             NotificationListener<UserScrollNotification>(
           onNotification: (notification) {
             final ScrollDirection direction = notification.direction;
-           
+
             if (direction == ScrollDirection.reverse) {
               scrollNotifier.value = false;
             } else if (direction == ScrollDirection.forward) {

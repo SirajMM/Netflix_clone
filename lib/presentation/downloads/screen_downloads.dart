@@ -54,7 +54,7 @@ class _SmartDownloads extends StatelessWidget {
 }
 
 class Section2 extends StatelessWidget {
-  Section2({super.key});
+  const Section2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -104,7 +104,7 @@ class Section2 extends StatelessWidget {
                           angle: -20,
                           size: Size(size.width * .38, size.width * .55)),
                       DownloadImageWidget(
-                         imageList:
+                          imageList:
                               '$imageAppendUrl${state.downloads[2].posterPath}',
                           margin: const EdgeInsets.only(left: 0),
                           size: Size(size.width * .4, size.width * .63)),
