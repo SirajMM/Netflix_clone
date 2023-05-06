@@ -29,20 +29,20 @@ class SearchIdeal extends StatelessWidget {
                   return const Center(
                     child: Text('Error Occured'),
                   );
-                } else if (state.idealList.isEmpty) {
+                } else if (state.idleList.isEmpty) {
                   return const Center(
                     child: Text('No items found'),
                   );
                 }
                 return ListView.separated(
                   itemBuilder: (context, index) {
-                    final movie = state.idealList[index];
+                    final movie = state.idleList[index];
                     return TopSearchItemtile(
                         title: movie.title ?? 'No Titile Provided',
                         imageUrl: '$imageAppendUrl${movie.posterPath}');
                   },
                   separatorBuilder: (context, index) => kheight20,
-                  itemCount: state.idealList.length,
+                  itemCount: state.idleList.length,
                   shrinkWrap: true,
                 );
               },
@@ -69,6 +69,7 @@ class TopSearchItemtile extends StatelessWidget {
           width: size * 0.33,
           height: 75,
           decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(7),
               image: DecorationImage(
                   image: NetworkImage(imageUrl), fit: BoxFit.cover)),
         ),

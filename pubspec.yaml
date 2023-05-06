@@ -42,11 +42,12 @@ dependencies:
   json_annotation: ^4.8.0
   dartz: ^0.10.1
   dio: ^5.1.1
-  get_it: ^7.3.0
+  get_it: ^7.2.0
   injectable: ^1.5.3
   freezed_annotation: ^2.2.0
   video_player: ^2.6.1
   share_plus: ^4.5.3
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

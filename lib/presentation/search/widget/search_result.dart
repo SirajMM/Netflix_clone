@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix_clone/core/constants.dart';
-import 'package:netflix_clone/presentation/search/widget/search_result.dart';
+// import 'package:netflix_clone/presentation/search/widget/search_result.dart';
 import 'package:netflix_clone/presentation/search/widget/titile.dart';
 import '../../../application/search/search_bloc.dart';
 
@@ -28,7 +28,7 @@ class SearchResultWidget extends StatelessWidget {
               children: List.generate(20, (index) {
                 final movie = state.searchResultList[index];
                 return MainCard(
-                  imageUrl: '$imageAppendUrl${movie.posterPath}',
+                  imageUrl: movie.posterImageUrl,
                 );
               }),
             );

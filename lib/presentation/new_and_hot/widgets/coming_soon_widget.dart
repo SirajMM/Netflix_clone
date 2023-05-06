@@ -1,14 +1,28 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../../../core/constants.dart';
 import '../../widgets/Custom_Icon.dart';
 import '../../widgets/video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String stringDescription;
   const ComingSoonWidget({
-    super.key,
-  });
+    Key? key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.stringDescription,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +33,12 @@ class ComingSoonWidget extends StatelessWidget {
         children: [
           SizedBox(
             width: 50,
-            child: Column(children: const [
-              Text('FEB', style: TextStyle(fontSize: 16, color: Colors.grey)),
+            child: Column(children: [
+              Text(month,
+                  style: const TextStyle(fontSize: 16, color: Colors.grey)),
               Text(
-                '11',
-                style: TextStyle(
+                day,
+                style: const TextStyle(
                   fontSize: 25,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 6,
@@ -37,16 +52,19 @@ class ComingSoonWidget extends StatelessWidget {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const VideoWidget(
-                        vimg:
-                            "https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/ouB7hwclG7QI3INoYJHaZL4vOaa.jpg"),
+                    // Video widget
+                    VideoWidget(url: posterPath),
                     Row(
                       children: [
-                        Text(
-                          'TALL GIRL 2',
-                          style: GoogleFonts.kaushanScript(
-                            letterSpacing: -3,
-                            fontSize: 40,
+                        Expanded(
+                          child: Text(
+                            movieName,
+                            style: GoogleFonts.kaushanScript(
+                              letterSpacing: -3,
+                              fontSize: 30,
+                            ),
+                            overflow: TextOverflow.clip,
+                            maxLines: 1,
                           ),
                         ),
                         const Spacer(),
@@ -66,7 +84,7 @@ class ComingSoonWidget extends StatelessWidget {
                         kwidth,
                       ],
                     ),
-                    const Text('Coming on Friday'),
+                    Text('Coming on $day $month'),
                     kheight,
                     Row(children: [
                       SizedBox(
@@ -83,15 +101,16 @@ class ComingSoonWidget extends StatelessWidget {
                             color: Colors.white.withOpacity(.5)),
                       )
                     ]),
-                    const Text(
-                      "Tall Girl 2",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    Text(
+                      movieName,
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     kheight,
-                    const Text(
-                      '''Landing the lead in the school musical is a\ndreamcometrue for Jodi,untile the pressure\nsends her confidens -and her relationship-\ninto tailspin.''',
-                      style: TextStyle(color: Colors.grey),
+                    Text(
+                      stringDescription,
+                      style: const TextStyle(color: Colors.grey),
+                      maxLines: 4,
                     ),
                   ]),
             ),

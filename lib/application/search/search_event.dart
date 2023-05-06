@@ -6,4 +6,5 @@ class SearchEvent with _$SearchEvent {
   const factory SearchEvent.searchMovie({
     required String movieQuery,
   }) = SearchMovie;
+
 }

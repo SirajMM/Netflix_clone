@@ -5,7 +5,8 @@ import 'maincard.dart';
 
 class MainTitleCard extends StatelessWidget {
   final String title;
-  const MainTitleCard({super.key, required this.title});
+  final List<String> posterList;
+  const MainTitleCard({super.key, required this.title,required this.posterList});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,9 @@ class MainTitleCard extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                itemBuilder: (context, index) => const MainCard1(),
+                itemBuilder: (context, index) =>  MainCard1(imageUrl: posterList[index]),
                 separatorBuilder: (context, index) => kwidth,
-                itemCount: 10))
+                itemCount: posterList.length))
       ],
     );
   }

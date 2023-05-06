@@ -4,9 +4,8 @@ import '../../widgets/main_title.dart';
 import 'numbercard.dart';
 
 class NumberTitleWidget extends StatelessWidget {
-  const NumberTitleWidget({
-    super.key,
-  });
+  final List<String> posterList;
+  const NumberTitleWidget({super.key, required this.posterList});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,12 @@ class NumberTitleWidget extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
-                itemBuilder: (context, index) => NumberCard(index: index),
+                itemBuilder: (context, index) =>
+                    NumberCard(index: index, imageUrl: posterList[index]),
                 separatorBuilder: (context, index) => const SizedBox(
                       width: 0,
                     ),
-                itemCount: 10))
+                itemCount: posterList.length))
       ],
     );
   }

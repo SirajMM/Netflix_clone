@@ -1,19 +1,37 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../core/colors/colors.dart';
 
 class VideoWidget extends StatelessWidget {
-  final String vimg;
-  const VideoWidget({super.key, required this.vimg});
+  final String url;
+  const VideoWidget({super.key, required this.url});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Container(
+        SizedBox(
           height: 200,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  fit: BoxFit.cover, image: NetworkImage(vimg))),
+          width: double.infinity,
+          child: Image.network(
+            url,
+            fit: BoxFit.cover,
+            loadingBuilder: (_, child, loadingProgress) {
+              if (loadingProgress == null) {
+                return child;
+              } else {
+                return const Center(
+                    child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                ));
+              }
+            },
+            errorBuilder: (_, error, stackTrace) => const Center(
+                child: Icon(
+             CupertinoIcons.exclamationmark_circle,
+              color: Colors.grey,
+            )),
+          ),
         ),
         Positioned(
           bottom: 10,

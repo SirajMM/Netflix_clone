@@ -12,9 +12,9 @@ class ScreenSearch extends StatelessWidget {
   final _debouncer = Debouncer(milliseconds: 1000);
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<SearchBloc>(context).add(const Initialize());
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    // });
+    BlocProvider.of<SearchBloc>(context).add(const Initialize());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(10.0),

@@ -11,7 +11,7 @@ class ScreenDownloads extends StatelessWidget {
   ScreenDownloads({super.key});
   final _widgetList = [
     const _SmartDownloads(),
-    Section2(),
+    const Section2(),
     const Section3(),
   ];
   @override
@@ -58,10 +58,11 @@ class Section2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      BlocProvider.of<DownloadsBloc>(context)
-          .add(const DownloadsEvent.getDownloadsImage());
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+
+    // });
+    BlocProvider.of<DownloadsBloc>(context)
+        .add(const DownloadsEvent.getDownloadsImage());
     // BlocProvider.of<DownloadsBloc>(context)
     //     .add(const DownloadsEvent.getDownloadsImage());
     final size = MediaQuery.of(context).size;

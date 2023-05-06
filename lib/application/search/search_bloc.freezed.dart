@@ -314,7 +314,7 @@ abstract class SearchMovie implements SearchEvent {
 mixin _$SearchState {
   List<SearchResultData> get searchResultList =>
       throw _privateConstructorUsedError;
-  List<Downloads> get idealList => throw _privateConstructorUsedError;
+  List<Downloads> get idleList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isError => throw _privateConstructorUsedError;
 
@@ -331,7 +331,7 @@ abstract class $SearchStateCopyWith<$Res> {
   @useResult
   $Res call(
       {List<SearchResultData> searchResultList,
-      List<Downloads> idealList,
+      List<Downloads> idleList,
       bool isLoading,
       bool isError});
 }
@@ -350,7 +350,7 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   @override
   $Res call({
     Object? searchResultList = null,
-    Object? idealList = null,
+    Object? idleList = null,
     Object? isLoading = null,
     Object? isError = null,
   }) {
@@ -359,9 +359,9 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.searchResultList
           : searchResultList // ignore: cast_nullable_to_non_nullable
               as List<SearchResultData>,
-      idealList: null == idealList
-          ? _value.idealList
-          : idealList // ignore: cast_nullable_to_non_nullable
+      idleList: null == idleList
+          ? _value.idleList
+          : idleList // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -385,7 +385,7 @@ abstract class _$$_SearchStateCopyWith<$Res>
   @useResult
   $Res call(
       {List<SearchResultData> searchResultList,
-      List<Downloads> idealList,
+      List<Downloads> idleList,
       bool isLoading,
       bool isError});
 }
@@ -402,7 +402,7 @@ class __$$_SearchStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchResultList = null,
-    Object? idealList = null,
+    Object? idleList = null,
     Object? isLoading = null,
     Object? isError = null,
   }) {
@@ -411,9 +411,9 @@ class __$$_SearchStateCopyWithImpl<$Res>
           ? _value._searchResultList
           : searchResultList // ignore: cast_nullable_to_non_nullable
               as List<SearchResultData>,
-      idealList: null == idealList
-          ? _value._idealList
-          : idealList // ignore: cast_nullable_to_non_nullable
+      idleList: null == idleList
+          ? _value._idleList
+          : idleList // ignore: cast_nullable_to_non_nullable
               as List<Downloads>,
       isLoading: null == isLoading
           ? _value.isLoading
@@ -432,11 +432,11 @@ class __$$_SearchStateCopyWithImpl<$Res>
 class _$_SearchState implements _SearchState {
   const _$_SearchState(
       {required final List<SearchResultData> searchResultList,
-      required final List<Downloads> idealList,
+      required final List<Downloads> idleList,
       required this.isLoading,
       required this.isError})
       : _searchResultList = searchResultList,
-        _idealList = idealList;
+        _idleList = idleList;
 
   final List<SearchResultData> _searchResultList;
   @override
@@ -447,12 +447,12 @@ class _$_SearchState implements _SearchState {
     return EqualUnmodifiableListView(_searchResultList);
   }
 
-  final List<Downloads> _idealList;
+  final List<Downloads> _idleList;
   @override
-  List<Downloads> get idealList {
-    if (_idealList is EqualUnmodifiableListView) return _idealList;
+  List<Downloads> get idleList {
+    if (_idleList is EqualUnmodifiableListView) return _idleList;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_idealList);
+    return EqualUnmodifiableListView(_idleList);
   }
 
   @override
@@ -462,7 +462,7 @@ class _$_SearchState implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(searchResultList: $searchResultList, idealList: $idealList, isLoading: $isLoading, isError: $isError)';
+    return 'SearchState(searchResultList: $searchResultList, idleList: $idleList, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -472,8 +472,7 @@ class _$_SearchState implements _SearchState {
             other is _$_SearchState &&
             const DeepCollectionEquality()
                 .equals(other._searchResultList, _searchResultList) &&
-            const DeepCollectionEquality()
-                .equals(other._idealList, _idealList) &&
+            const DeepCollectionEquality().equals(other._idleList, _idleList) &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.isError, isError) || other.isError == isError));
@@ -483,7 +482,7 @@ class _$_SearchState implements _SearchState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_searchResultList),
-      const DeepCollectionEquality().hash(_idealList),
+      const DeepCollectionEquality().hash(_idleList),
       isLoading,
       isError);
 
@@ -497,14 +496,14 @@ class _$_SearchState implements _SearchState {
 abstract class _SearchState implements SearchState {
   const factory _SearchState(
       {required final List<SearchResultData> searchResultList,
-      required final List<Downloads> idealList,
+      required final List<Downloads> idleList,
       required final bool isLoading,
       required final bool isError}) = _$_SearchState;
 
   @override
   List<SearchResultData> get searchResultList;
   @override
-  List<Downloads> get idealList;
+  List<Downloads> get idleList;
   @override
   bool get isLoading;
   @override

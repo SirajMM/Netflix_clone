@@ -1,5 +1,9 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix_clone/application/home/home_bloc.dart';
 import 'package:netflix_clone/core/colors/colors.dart';
 import 'package:netflix_clone/presentation/home/widget/home_background_card.dart';
 import 'package:netflix_clone/presentation/home/widget/numberwidget.dart';
@@ -13,6 +17,9 @@ class ScreenHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // WidgetsBinding.instance.addPersistentFrameCallback((_) {
+    // });
+    BlocProvider.of<HomeBloc>(context).add(const GetHomeScreenData());
     return Scaffold(
       backgroundColor: backgroundcolor,
       body: ValueListenableBuilder(
@@ -31,21 +38,69 @@ class ScreenHome extends StatelessWidget {
           },
           child: Stack(
             children: [
-              ListView(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                children: const [
-                  HomeBackgroungCard(),
-                  MainTitleCard(title: 'Released in the past year'),
-                  kheight,
-                  MainTitleCard(title: 'Trending Now'),
-                  kheight,
-                  NumberTitleWidget(),
-                  kheight,
-                  MainTitleCard(title: 'Tense Dramas'),
-                  kheight,
-                  MainTitleCard(title: 'South Indian Cinema'),
-                ],
+              BlocBuilder<HomeBloc, HomeState>(
+                builder: (context, state) {
+                  if (state.isLoading) {
+                    return const Center(
+                        child: CircularProgressIndicator(
+                      strokeWidth: 2,
+                    ));
+                  }
+                  //else if (state.isError) {
+                  //   return const Center(
+                  //       child: Text('Error while getting data'));
+                  // }
+
+                  // released past year
+                  final _rleasePastYear = state.pastYearMovieList.map((m) {
+                    return '$imageAppendUrl${m.posterPath}';
+                  }).toList();
+                  // trending
+                  final _trending = state.trendingMoviesList.map((m) {
+                    return '$imageAppendUrl${m.posterPath}';
+                  }).toList();
+                  // tense dramas
+                  final _tenseDramas = state.tenseDramasMovieList.map((m) {
+                    return '$imageAppendUrl${m.posterPath}';
+                  }).toList();
+                  // South Indian
+                  final _southIndianMovies =
+                      state.tenseDramasMovieList.map((m) {
+                    return '$imageAppendUrl${m.posterPath}';
+                  }).toList();
+                  _southIndianMovies.shuffle();
+                  // Top10 Tv shows
+                  final _top10TvShows = state.trendingTvList.map((t) {
+                    return '$imageAppendUrl${t.posterPath}';
+                  }).toList();
+                  _top10TvShows.shuffle();
+                  print(state.trendingTvList.length);
+                  return ListView(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    children: [
+                      const HomeBackgroungCard(),
+                      MainTitleCard(
+                        title: 'Released in the past year',
+                        posterList: _rleasePastYear,
+                      ),
+                      kheight,
+                      MainTitleCard(
+                        title: 'Trending Now',
+                        posterList: _trending,
+                      ),
+                      kheight,
+                      NumberTitleWidget(posterList: _top10TvShows),
+                      kheight,
+                      MainTitleCard(
+                          title: 'Tense Dramas', posterList: _tenseDramas),
+                      kheight,
+                      MainTitleCard(
+                          title: 'South Indian Cinema',
+                          posterList: _southIndianMovies),
+                    ],
+                  );
+                },
               ),
               scrollNotifier.value == true
                   ? AnimatedContainer(
