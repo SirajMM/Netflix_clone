@@ -39,8 +39,8 @@ class _SmartDownloads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
+    return const Row(
+      children: [
         kwidth,
         Icon(
           Icons.settings,
@@ -84,7 +84,7 @@ class Section2 extends StatelessWidget {
             return SizedBox(
               height: size.width,
               width: size.width,
-              child: state.isLoading
+              child: state.isLoading || state.downloads.isEmpty
                   ? const Center(child: CircularProgressIndicator())
                   : Stack(alignment: Alignment.center, children: [
                       CircleAvatar(
