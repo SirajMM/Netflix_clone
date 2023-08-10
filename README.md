@@ -1,16 +1,7 @@
 # netflix_clone
 
-A new Flutter project.
+![Apple iPhone 11 Pro Max Screenshot 1](https://github.com/SirajMM/Netflix_clone/assets/118870564/b8f1456b-357f-41c4-9cf9-3f6bd41bc872)![Apple iPhone 11 Pro Max Screenshot 2](https://github.com/SirajMM/Netflix_clone/assets/118870564/68cd164b-d7aa-4d2c-a375-9954eeae00b0)
 
-## Getting Started
+![Apple iPhone 11 Pro Max Screenshot 3](https://github.com/SirajMM/Netflix_clone/assets/118870564/2b067263-b6f2-4a4b-ae19-3b882b133e19)![Apple iPhone 11 Pro Max Screenshot 4](https://github.com/SirajMM/Netflix_clone/assets/118870564/949260e1-9267-4347-9679-02a09dab23a6)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Apple iPhone 11 Pro Max Screenshot 5](https://github.com/SirajMM/Netflix_clone/assets/118870564/42b6a4b8-cebc-4cd0-90f2-0d5283f43613)
